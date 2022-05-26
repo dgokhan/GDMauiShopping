@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GDMauiShopping.MainPage"
+             xmlns:helpers="clr-namespace:GDMauiShopping.Resources.Helpers">
+
+    <ScrollView BackgroundColor="#f5f8fd">
+        <Grid RowDefinitions="450,50,150,50,50,50">
+            <Image Source="banner" VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Aspect="AspectFill" />
+
+            <Grid RowDefinitions="330,50">
+                <Grid Margin="20,30" HeightRequest="50" BackgroundColor="#44ffffff" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+                    <Grid Margin="20,5">
+                        <Label FontFamily="IconFont" FontSize="20" 
+                               VerticalOptions="Center" 
+                               Text="{x:Static helpers:IconFontHelper.Magnify}"
+                               TextColor="White"/>
+
+                        <Entry Margin="30,0" FontFamily="NunitoSansRegular"
+                               VerticalOptions="Center" HorizontalOptions="FillAndExpand" 
+                               Placeholder="What are you looking for?"
+                               PlaceholderColor="White" TextColor="#fff" />
+                    </Grid>
+                </Grid>
+                <StackLayout Grid.Row="1" Margin="20,0">
+                    <Label FontFamily="NunitoSansRegular" FontSize="17" 
+                           Text="Recommendations" TextColor="#cfcfcf"/>
+                    <Label FontSize="35" FontFamily="NunitoSansExtraBold" 
+                           TextColor="#fff" Text="Women Blue Denim"  />
+
+                    <Grid ColumnDefinitions="90,60">
+                        <Label FontSize="25" FontFamily="NunitoSansExtraBold" 
+                               TextColor="#56bffc" Text="$30.00" 
+                               VerticalTextAlignment="Center" />
+                        <Label Grid.Column="1" TextColor="#cfcfcf" Text="$30.00" 
+                               FontSize="15" FontFamily="NunitoSansRegular" 
+                               TextDecorations="Strikethrough" VerticalTextAlignment="Center" />
+                    </Grid>
+                </StackLayout>
+            </Grid>
+
+            <StackLayout Grid.Row="1" Orientation="Horizontal">
+                <Label HorizontalOptions="Start" VerticalOptions="Center" Text="Trending" FontFamily="NunitoSansBold" FontSize="20" Margin="20,20,20,0" />
+                <Label HorizontalOptions="EndAndExpand" VerticalOptions="Center" FontFamily="NunitoSansExtraBold" 
+                       TextColor="#2687ee" Text="Show All" FontSize="12" Margin="20,20,20,0" />
+            </StackLayout>
+
+            <CollectionView Grid.Row="2" ItemSizingStrategy="MeasureFirstItem" ItemsSource="{Binding Products}" 
+                            BackgroundColor="White" Margin="20,5,0,0">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Horizontal"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Grid.Row="2" BackgroundColor="White" Padding="10,0">
+                            <Grid HeightRequest="120" WidthRequest="120">
+                                <Grid RowDefinitions="*,20">
+                                    <Image Aspect="AspectFill" Source="{Binding ImageUrl}"/>
+                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                                    <StackLayout Grid.Row="1" Spacing="0" Margin="12" VerticalOptions="EndAndExpand">
+                                        <Label FontSize="12" TextColor="#8f8f8f" Text="{Binding Title}" FontFamily="NunitoSansRegular" />
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label FontSize="13" TextColor="Black" Text="{Binding Price, StringFormat='${0:G}'}" FontFamily="NunitoSansExtraBold"  />
+                                            <Label Margin="10,0" FontSize="10" TextColor="#cfcfcf" Text="{Binding OldPrice, StringFormat='${0:G}'}" FontFamily="NunitoSansRegular" TextDecorations="Strikethrough" VerticalOptions="Center" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Grid>
+                            </Grid>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <StackLayout Grid.Row="3" Orientation="Horizontal">
+                <Label HorizontalOptions="Start" VerticalOptions="Center" Text="Categories" 
+                       FontFamily="NunitoSansBold" FontSize="20" Margin="20,20,20,0" />
+                <Label HorizontalOptions="EndAndExpand" VerticalOptions="Center" 
+                       FontFamily="NunitoSansExtraBold" 
+                       TextColor="#2687ee" Text="Show All" FontSize="12" Margin="20,20,20,0" />
+            </StackLayout>
+
+            <StackLayout Grid.Row="4" Orientation="Horizontal" Spacing="20" Margin="20,0" BackgroundColor="White">
+                <Label Margin="20,0" FontFamily="IconFont" FontSize="25" 
+                       VerticalOptions="Center" 
+                       Text="{x:Static helpers:IconFontHelper.FaceWoman}"
+                       TextColor="Black"/>
+
+                <Label Margin="-10,0" Text="Woman" TextColor="Black" FontFamily="NunitoSansBold" 
+                       VerticalOptions="Center" />
+
+                <Label Text="(728 items)" TextColor="#cfcfcf" FontFamily="NunitoSansRegular" 
+                       VerticalOptions="Center" />
+
+                <Label Margin="100,0" FontFamily="IconFont" FontSize="20" 
+                       VerticalOptions="Center" 
+                       Text="{x:Static helpers:IconFontHelper.ChevronRight}"
+                       TextColor="Black"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="5" Orientation="Horizontal" Spacing="20" Margin="20,0" BackgroundColor="White">
+                <Label Margin="20,0" FontFamily="IconFont" FontSize="25" 
+                       VerticalOptions="Center" 
+                       Text="{x:Static helpers:IconFontHelper.FaceMan}"
+                       TextColor="Black"/>
+
+                <Label Margin="-10,0" Text="Woman" TextColor="Black" FontFamily="NunitoSansBold" 
+                       VerticalOptions="Center" />
+
+                <Label Text="(536 items)" TextColor="#cfcfcf" FontFamily="NunitoSansRegular" 
+                       VerticalOptions="Center" />
+
+                <Label Margin="100,0" FontFamily="IconFont" FontSize="20" 
+                       VerticalOptions="Center" 
+                       Text="{x:Static helpers:IconFontHelper.ChevronRight}"
+                       TextColor="Black"/>
+            </StackLayout>
+ 
+        </Grid>
+    </ScrollView>
+
+</ContentPage>
